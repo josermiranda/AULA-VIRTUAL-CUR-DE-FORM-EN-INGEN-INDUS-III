@@ -20,3 +20,26 @@ hist(mtcars$hp, breaks="Sturges")
 skewness(mtcars$hp)
 
 
+#Estudio de normalidad en R
+
+plot(mtcars$mpg, dnorm(mtcars$mpg, mean = mean(mtcars$mpg), sd = sd(mtcars$mpg)), ylab = "", lwd = 2, col = "red")
+
+#Añadimos la media
+abline(v=mean(mtcars$mpg))
+
+
+# Programa en R que diseña una tabla de distribución de frecuencias
+# Fecha creación: 22-04-2022
+# Autora: Francisca Novoa
+# Instalar paquetes
+
+
+install.packages("fdth")
+
+
+
+
+
+
+
+
