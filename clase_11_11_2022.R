@@ -25,5 +25,11 @@ visdat::vis_dat(mtcars,sort_type = FALSE) # ayuda a explorar la estructura de la
 
 visdat::vis_miss(mtcars) # Gráfico personalizado de los datos que faltan.
 
+diagnose(mtcars) %>% flextable() #Entrega información, que permite determinar la calidad de la variables.
 
+funModeling::freq(mtcars$vs)
+
+funModeling::freq(mtcars$am)
+
+diagnose_category(mtcars) %>% flextable() #Muestra un análisis de las variables categóricas
 
