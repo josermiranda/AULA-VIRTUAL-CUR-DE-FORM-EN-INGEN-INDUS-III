@@ -178,4 +178,66 @@ ggplot(data_qq,aes(x=qq_mpg,y=qq_hp))+
 
 
 
+#Formulacion de Hipotesis
+
+##Comparar distribuciones
+
+#Ho: la variable mtcars$mpg No  esta distribuida normalmente
+
+#H1: La variable esta distribuida normalmente 
+
+
+#El punto de comparacion esta dado por la variable Delta = 0,05 
+#ESTO QUIERE DECIR QUE EL VALOR DE PRECISION P-VALUE TE ARROJA EL TEST DE NORMALIDAD ES MAYOR O IGUAL AL DELTA
+#LA VARIABLE ESTA DISTRIBUIDA nORMALMENTE DE LO CONTRARIO NO LO ESTA
+#aplico
+shapiro.test(mtcars$mpg)
+
+# se rechaza la hipotesisnula H0 , puesto que la variable mtcars$mpg esta distribuida normalmente 
+# por lo tanto se cimprueba la hipotesis alternativa  que dice  la variable mtcars$mpg esta distribuida normalmente 
+
+
+#segundo caso HP
+
+#H:0 la variable mtcars$mpg No  esta distribuida normalmente
+
+shapiro.test(mtcars$hp)
+
+#Se comprueba la hipotesis nula  puesto quec la variable no esta distribuida  normalmente . Con esto 
+#se rechaza la hipotesis alternativa H1 , que dice " la variable mtcars $hp esta distribuida normalmente.
+
+
+# tabla de p-value para todas las variables 
+
+normality(mtcars) %>% flextable()
+
+
+ks.test(mtcars_stand[,1],mtcars_stand[,4])
+
+ks.test(mtcars$mpg,mtcars$hp)
+
+
+
+##Detección de valores atípicos
+
+# tabla que muestra la cantidad de valores atipicos  
+
+diagnose_outlier(mtcars) %>% flextable()
+
+
+#Diagrama de cajas  para detectar valores atipicos  
+ggplot(mtcars, aes(y=hp)) + 
+  geom_boxplot(fill="lightgreen",varwidth = T)+
+  labs(x = "", y = "HP")+
+  theme(text = element_text(size=14))+
+  theme_grey(base_size = 16)
+
+
+ggplot(mtcars, aes(y=hp, x=vs)) + 
+  geom_boxplot(fill="lightgreen",varwidth = T)+
+  labs(x = "vs", y = "HP")+
+  theme(text = element_text(size=14))+
+  theme_grey(base_size = 16)
+
+
 
