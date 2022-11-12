@@ -241,3 +241,85 @@ ggplot(mtcars, aes(y=hp, x=vs)) +
 
 
 
+#Diagrama de dispersión 
+#png("scat_plot.png",width = 4, height =4,units = "in",pointsize = 16,res = 300)
+
+
+ggplot(mtcars,aes(x=mpg,y=hp))+
+  geom_point()+
+  geom_smooth(method=lm, se=FALSE)+
+  labs(x = "MPG", y = "HP")+
+  theme(text = element_text(size=14))+
+  theme_grey(base_size = 16)
+
+
+##Coeficientes de correlación
+
+#covarianza
+
+# covarianza mayor a cero , dependencia  directa positiva ( a grandes valores de x corresponde grandes valores de y)
+# Covarianza = 0  no existencia de una relacion lineal entre las dos variables 
+# Covarianza menor a 0  Dependencia inversa o negativa  ( a grandes valores de x corresponde pequeños  valores de y)
+
+cov(mtcars$mpg,mtcars$hp) 
+
+
+
+#correlación de Pearson
+cor(mtcars$mpg,mtcars$hp) 
+
+cor(mtcars$mpg,mtcars$qsec)
+
+cor.test(mtcars$mpg,mtcars$hp)
+
+#correlación de Spearman automático
+
+cor(mtcars$mpg,mtcars$hp,method = "spearman")
+
+
+cor.test(mtcars$mpg,mtcars$qsec,method = "spearman")
+
+
+##Tau de kendall
+cor(mtcars$mpg,mtcars$hp,method = "kendall")
+
+
+
+#matriz de correlación
+options(digits = 2)
+cor_matrix<-cor(mtcars[,-c(8,9,12)],method = "spearman")
+cor_matrix
+
+
+
+
+library(corrplot)
+#png("cor_plot.png",width = 4, height =4,units = "in",pointsize = 16,res = 300)
+
+
+corrplot(cor_matrix, method="ellipse",type = "upper")
+#dev.off()
+
+#
+#Interpretación del valor de correlación. 
+#Correlacón 			Interpretación 
+#0.9 a 1.0 (-0.9 a -1.0) 	muy fuerte 
+#0.7 a 0.9 (-0.7 a -0.9) 	fuerte 
+#0.5 a 0.7 (-0.5 a -0.7) 	moderada 
+#0.3 a 0.5 (-0.3 a -0.5) 	débil 
+#0 a 0.3 (0 a -0.3) 		despreciable
+#
+
+
+
+library(PerformanceAnalytics)
+chart.Correlation(mtcars[,c(1:7)], histogram = TRUE, pch = 19,method="spearman")
+
+install.packages("DataExplorer")
+library(DataExplorer)
+create_report(mtcars)
+
+
+
+
+
