@@ -13,3 +13,17 @@ library(qqplotr)
 library(ggpmisc)
 library(PerformanceAnalytics)
 library(corrplot)
+
+
+data("mtcars")
+dim(mtcars)
+str(mtcars)
+mtcars$vs<-factor(mtcars$vs) #transforma la columna  vs en factor #
+mtcars$am<-factor(mtcars$am)  #transforma la columna  am en factor #
+str(mtcars)
+visdat::vis_dat(mtcars,sort_type = FALSE) # ayuda a explorar la estructura de la clase de datos y la ausencia de valores.  No ordena las columnas según el tipo de datos en los vectores
+
+visdat::vis_miss(mtcars) # Gráfico personalizado de los datos que faltan.
+
+
+
