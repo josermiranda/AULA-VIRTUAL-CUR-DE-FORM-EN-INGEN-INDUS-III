@@ -40,7 +40,26 @@ diagnose_category(mtcars) %>% flextable() #Muestra un análisis de las variables
 
 summary(mtcars)
 
-summary(mtcars$mpg)
+summary(mtcars$mpg)<
 
+  
+  
+  
+  install.packages(c("mice", "factoextra", "gridExtra"))
+  
+  
+  
+library(mice)
+library(factoextra)
+library(gridExtra) 
+
+airq_dt<-read.csv("airq_dt.csv",sep = ",",header = T)
+
+
+imp_dt<-mice(airq_dt[,-7],m=1,seed=46)
+
+completedData <- complete(imp_dt,1)
+
+  
 
 

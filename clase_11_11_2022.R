@@ -8,7 +8,8 @@ hist(mtcars$mpg, breaks="Sturges")
 
 
 
-skewness(mtcars$mpg)
+
+  skewness(mtcars$mpg)
 # si el valor de skewness  es 0 indica que la curva es normal perfecta, es decir la moda= media= mediana#
 #si el valor es mayor a cero significa que la cuerva esta sesgada o es asimetrica  hacia la derecha#
 #si el valor es menor a cero significa que  la cuerva esta sesgada o es asimetrica  hacia la izquierda#
