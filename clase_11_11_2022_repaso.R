@@ -27,9 +27,20 @@ visdat::vis_miss(mtcars) # Gráfico personalizado de los datos que faltan.
 
 diagnose(mtcars) %>% flextable() #Entrega información, que permite determinar la calidad de la variables.
 
+#análisis de variables categóricas o enteras
+
 funModeling::freq(mtcars$vs)
 
 funModeling::freq(mtcars$am)
 
 diagnose_category(mtcars) %>% flextable() #Muestra un análisis de las variables categóricas
+
+
+##analisis de variables numericas
+
+summary(mtcars)
+
+summary(mtcars$mpg)
+
+
 
